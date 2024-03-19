@@ -1,0 +1,659 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your Project Name API",
+        "description": "test-jwt-token-for-project",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/your-project-folder"
+        }
+    ],
+    "paths": {
+        "/v1/Auth/Login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "It is used to log in to the system.",
+                "operationId": "910d29304c4612fc319745d9845e7499",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthUserModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/v1/Auth/Register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "It is used to register to the system.",
+                "operationId": "193a43232c2e978d77561c38eeff1efa",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthUserModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": []
+            }
+        },
+        "/v1/Auth/AutoLogin": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "It is used to automatically log in to systems.",
+                "operationId": "8d4739b1cfb9104fff3069c2da3fea3e",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthUserModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/UploadFile/CreateFile": {
+            "post": {
+                "tags": [
+                    "UploadFile"
+                ],
+                "summary": "It is used to upload files to the system.",
+                "operationId": "daf297dfc32ca5b1fbd6afd7af4ee301",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "file": {
+                                        "type": "file",
+                                        "format": "binary"
+                                    },
+                                    "fileTitle": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Başarılı",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FileModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/User/GetAll": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "It is used to get all users in the system.",
+                "operationId": "cff4870a3aa90ea505c7aaa2d824563d",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/UserModel"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/User/GetSingle": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "It is used to get the user in the system.",
+                "operationId": "ef027dfda7dd54ea225801476e8eb0b1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "User Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/User/Create": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "It is used to add a new user to the system.",
+                "operationId": "acaba06218a67734384e1730c6937f12",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/User/Update": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "It is used to update the user in the system.",
+                "operationId": "6818750229f3dffeb693a6d1b0ef39ea",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserModel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/v1/User/Delete": {
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "It is used to delete the user in the system.",
+                "operationId": "954c4943ea2685349d2c684c08f9c1cb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "User Id",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/Swagger": {
+            "post": {
+                "tags": [
+                    "@Example"
+                ],
+                "summary": "Swagger Documentation",
+                "operationId": "03e61ce0a7a900bc03b2c997ba794290",
+                "parameters": [
+                    {
+                        "name": "param1",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "param2",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "param3",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "param3": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "param4": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Obje Model Dönüş",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SwaggerModel"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Obje Free Dönüş",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "param1": {
+                                            "type": "string"
+                                        },
+                                        "param2": {
+                                            "type": "integer"
+                                        },
+                                        "param3": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "202": {
+                        "description": "Array Model Dönüş",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SwaggerModel"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "203": {
+                        "description": "Array Obje Free Dönüş",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "param1": {
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "param2": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Serbest Örnek Dönüş",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "param1": 0,
+                                    "param2": "string",
+                                    "param3": true
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Hata dönüşü"
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AuthUserModel": {
+                "title": "AuthUserModel",
+                "properties": {
+                    "token": {
+                        "description": "JWT Token",
+                        "type": "string"
+                    },
+                    "userName": {
+                        "description": "User name",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "E-mail address",
+                        "type": "string"
+                    },
+                    "role": {
+                        "description": "User role",
+                        "type": "enum",
+                        "enum": [
+                            "admin",
+                            "user"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "LoginModel": {
+                "title": "LoginModel",
+                "properties": {
+                    "email": {
+                        "description": "E-mail address",
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "Password",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "RegisterModel": {
+                "title": "RegisterModel",
+                "properties": {
+                    "email": {
+                        "description": "E-mail address",
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "Password",
+                        "type": "string"
+                    },
+                    "passwordConfirm": {
+                        "description": "Password confirmation",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "FreeModel": {
+                "title": "FreeModel",
+                "type": "object"
+            },
+            "SwaggerModel": {
+                "title": "SwaggerModel",
+                "properties": {
+                    "stringParam": {
+                        "type": "string"
+                    },
+                    "integerParam": {
+                        "type": "integer"
+                    },
+                    "booleanParam": {
+                        "type": "boolean"
+                    },
+                    "floatParam": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "datetimeParam": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "enumParam": {
+                        "type": "enum",
+                        "enum": [
+                            "enum1",
+                            "enum2",
+                            "enum3"
+                        ]
+                    },
+                    "nullableStringParam": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "objectParam": {
+                        "type": "object"
+                    },
+                    "arrayParam": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "objectFreeParam": {
+                        "properties": {
+                            "property1": {
+                                "type": "string"
+                            },
+                            "property2": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "arrayObjectFreeParam": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "property1": {
+                                    "type": "string"
+                                },
+                                "property2": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "objectRefParam": {
+                        "$ref": "#/components/schemas/SwaggerModel"
+                    },
+                    "arrayObjectRefParam": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SwaggerModel"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "FileModel": {
+                "title": "FileModel",
+                "properties": {
+                    "id": {
+                        "description": "Image ID",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Image type",
+                        "type": "string"
+                    },
+                    "size": {
+                        "description": "Image size",
+                        "type": "string"
+                    },
+                    "url": {
+                        "description": "Image URL",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "Image type",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UserModel": {
+                "title": "UserModel",
+                "properties": {
+                    "id": {
+                        "description": "User ID",
+                        "type": "string"
+                    },
+                    "userName": {
+                        "description": "User name",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "E-mail address",
+                        "type": "string"
+                    },
+                    "role": {
+                        "description": "User role",
+                        "type": "enum",
+                        "enum": [
+                            "admin",
+                            "user"
+                        ]
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "Bearer": {
+                "type": "http",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

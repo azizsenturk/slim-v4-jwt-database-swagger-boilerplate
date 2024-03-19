@@ -1,0 +1,40 @@
+{
+    "name": "azizsenturk/slim-v4-jwt-database-swagger-boilerplate",
+    "description": "Slim 4 JWT Database Swagger Boilerplate", 
+    "keywords": ["php", "slim", "jwt", "auth", "swagger"],
+    "homepage": "https://github.com/azizsenturk/slim-v4-jwt-database-swagger-boilerplate",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aziz Şentürk",
+            "homepage": "https://azizsenturk.com/"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "firebase/php-jwt": "^6.10",
+        "gumlet/php-image-resize": "^2.0",
+        "izniburak/pdox": "^1.6",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1",
+        "php-di/php-di": "^7.0",
+        "selective/basepath": "^2.1",
+        "slim/slim": "^4.12",
+        "vlucas/phpdotenv": "^5.6",
+        "zircote/swagger-php": "^4.8"
+    },
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/App/",
+            "Core\\": "src/Core/",
+            "Utils\\": "src/Utils/"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t public"
+    }
+}
