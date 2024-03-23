@@ -23,7 +23,7 @@
 			"\t\tparent::__construct(\\$container);",
 			"\t}",
 			"",
-			"\t#[OA\\Post(",
+			"\t#[OA\\Get(",
 			"\t\tpath: '/v1/${1}/GetAll',",
 			"\t\tsummary: 'It is used to get all ${1}s in the system.',",
 			"\t\ttags: ['${1}'],",
